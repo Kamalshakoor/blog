@@ -2,9 +2,10 @@
 <div class="row text-center mb-5">
     <div class="col-12 text-success text-muted"><h1>All Articles Listing</h1></div>
 </div>
-<% @articles.each do |article| %>
-    <div class="row mb-5">
-        <div class="col-md-6 offset-md-3">
+
+<div class="row mb-5">
+    <% @articles.each do |article| %>
+        <div class="col-md-4 mb-3">
             <div class="card text-center shadow rounded">
                 <div class="card-header fst-italic">
                     Published by <%= article.user.username %>
@@ -23,8 +24,12 @@
                 </div>
             </div>
         </div>
-    </div>
-<% end %>
-
+    <% end %>
 </div>
+
+<div class="digg_pagination">
+    <%= will_paginate @articles, :container => false %>
+  </div>
+</div>
+
 

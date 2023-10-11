@@ -8,9 +8,9 @@
     min-height: 25rem;
     width: 100%;
     overflow: hidden;
-  }
-  
-  .video-background-holder video {
+}
+
+.video-background-holder video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -23,14 +23,14 @@
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-  }
-  
-  .video-background-content {
+}
+
+.video-background-content {
     position: relative;
     z-index: 2;
-  }
-  
-  .video-background-overlay {
+}
+
+.video-background-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -39,10 +39,72 @@
     background-color: black;
     opacity: 0.5;
     z-index: 1;
-  }
+}
 
 //   Home page css end here 
 
-.card-title .text-success{
-  text-decoration: none;
+.card-title .text-success {
+    text-decoration: none;
+}
+
+// pagination styling css
+.digg_pagination {
+    background: white;
+    cursor: default;
+    /* self-clearing method: */
+}
+.digg_pagination a,
+.digg_pagination em,
+.digg_pagination span {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px;
+}
+.digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd;
+}
+.digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #2e6ab1;
+    color: white;
+    border: 1px solid #2e6ab1;
+}
+.digg_pagination a {
+    text-decoration: none;
+    color: #105cb6;
+    border: 1px solid #9aafe5;
+}
+.digg_pagination a:focus,
+.digg_pagination a:hover {
+    color: #000033;
+    border-color: #000033;
+}
+.digg_pagination .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center;
+}
+.digg_pagination .page_info b {
+    color: #000033;
+    background: #6aa6ed;
+    padding: 0.1em 0.25em;
+}
+.digg_pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+* html .digg_pagination {
+    height: 1%;
+}
+*:first-child + html .digg_pagination {
+    overflow: hidden;
 }

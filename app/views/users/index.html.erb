@@ -1,28 +1,37 @@
 <div class="container mt-5 mb-5">
-<div class="row text-center mb-5">
-    <div class="col-12 text-success text-muted"><h1>All Bloggers </h1></div>
-    <hr /> <hr />
-</div>
+    <div class="row text-center mb-5">
+        <div class="col-12 text-success text-muted">
+            <h1>All Bloggers
+            </h1>
+        </div>
+        <hr/>
+        <hr/>
+    </div>
 
-<% @users.each do |user| %>
     <div class="row mb-5">
-        <div class="col-md-6 offset-md-3">
-            <div class="card text-center shadow rounded">
-                <div class="card-header fst-italic">
-                    <%= link_to user.username,user %>
-                </div>
-                <div class="card-body">
-                    <p class="card-text"><%= pluralize(user.articles.count, "Article")  %></p>
-                    <%= link_to "View Profile", user_path(user), class:"btn btn-outline-success" %>
-                    <%= link_to 'Edit Profile', edit_user_path(user), class:"btn btn-outline-warning" %>
-                </div>
-                <div class="card-footer text-body-secondary">
-                    <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
+        <% @users.each do |user| %>
+            <div class="col-md-6 mb-4">
+                <div class="card text-center shadow rounded">
+                    <div class="card-header fst-italic">
+                        <%= link_to user.username,user %>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><%= pluralize(user.articles.count, "Article") %></p>
+                        <%= link_to "View Profile", user_path(user), class:"btn btn-outline-success" %>
+                        <%= link_to 'Edit Profile', edit_user_path(user), class:"btn
+                        btn-outline-warning" %>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        <small>Joined
+                            <%= time_ago_in_words(user.created_at) %>
+                            ago</small>
+                    </div>
                 </div>
             </div>
-        </div>
+        <% end %>
     </div>
-<% end %>
 
 </div>
-
+<div class="digg_pagination">
+    <%= will_paginate @users, :container => false %>
+</div>
