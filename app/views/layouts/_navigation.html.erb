@@ -16,20 +16,32 @@
                 <%= link_to "Submit Article", new_article_path, class: "nav-link"%>
             </li>
              <li class="nav-item dropdown">
+             <% if logged_in? %>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Profile
+                        <%= current_user.username %>
                 </a>
+             <% else %>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Profile
+                </a>
+             <% end %>
+             
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li>
                     <%= link_to "SignUp", signup_path, class:"dropdown-item" %>
                     </li>
                     <li>
-                    <%= link_to "Login", login_path, class:"dropdown-item" %>
-                    </li>
-                    <li><hr class="dropdown-divider"></li>
+                    <% if logged_in? %>
+                    <hr class="dropdown-divider"></li>
                     <li>
                     <%= link_to "Logout", logout_path, class:"dropdown-item", method: :delete %>
                     </li>
+                    <% else %>
+                    <li>
+                    <%= link_to "Login", login_path, class:"dropdown-item" %>
+                    </li>
+                    <% end %>
+                    
                 </ul>
             </li>
             </ul>
