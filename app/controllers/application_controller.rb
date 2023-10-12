@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !!current_user #bolean condition to check if current_user exist or not
     end
+    def require_user
+        if !logged_in?
+            flash[:notice]= "You must be logged In to perform this action!"
+            redirect_to login_path
+        end
+    end
 end
