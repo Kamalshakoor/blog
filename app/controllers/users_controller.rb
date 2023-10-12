@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
+          flash[:notice] = "Welcome #{@user.username}, you have successfully signed up"
           redirect_to articles_path
         else
           render 'new'
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
     def update
       @user = User.find(params[:id])
       if @user.update(user_params)
+        flash[:notice] = "Your account information was successfully updated"
         redirect_to @user
       else
         render 'edit'

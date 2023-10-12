@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Rails Blog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <head>
+        <title>Rails Blog</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-  <body>
-   <%= render 'layouts/navigation' %>
-    <%= yield %>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':
+        'reload' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+
+    <body>
+      <%= render 'layouts/navigation' %>
+        <div class="container">
+            <% flash.each do |name, msg| %>
+               <div class="alert alert-<%= name == "notice" ? "success" : "danger" %> alert-dismissible fade show" role="alert">
+                <%= msg %>
+                <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="alert"></button>
+                </button>
+              </div>
+            <% end %>
+        </div>
+     
+      <%= yield %>
   </body>
 </html>
