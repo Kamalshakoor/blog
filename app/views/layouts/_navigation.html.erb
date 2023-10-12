@@ -39,6 +39,10 @@
                     <li>
                     <%= link_to "Logout", logout_path, class:"dropdown-item", method: :delete %>
                     </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                    <%= link_to "Delete Account", user_path(current_user), class:"dropdown-item", method: :delete, data:{confirm: "Are you sure?"} %>
+                    </li>
                     <% else %>
                     <li>
                     <%= link_to "SignUp", signup_path, class:"dropdown-item" %>
