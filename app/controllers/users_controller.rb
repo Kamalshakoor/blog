@@ -55,7 +55,7 @@ class UsersController < ApplicationController
             flash[:notice] = "You can only edit your own Profile"
             redirect_to @user
         end
-    end
+      end
     
   
   end

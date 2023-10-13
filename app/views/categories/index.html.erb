@@ -1,0 +1,35 @@
+<div class="container mt-5 mb-5">
+<div class="row text-center mb-5">
+    <div class="col-12 text-success text-muted"><h1>All Categories</h1></div>
+</div>
+
+<div class="row mb-5">
+    <% @categories.each do |category| %>
+        <div class="col-md-4 mb-3">
+            <div class="card text-center shadow rounded">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><%= link_to category.name,category_path(category), class:"text-decoration-none" %></h5>
+                     <p class="card-text"><%= pluralize(category.articles.count, "Article") %></p>
+
+                     <% if logged_in? && current_user.admin? %>
+                                <%= link_to 'Edit Category', edit_category_path(category), class:"btn
+                                btn-outline-warning" %> 
+                     <% end %>
+                        
+                </div>
+                <div class="card-footer text-body-secondary">
+                    <small>Created <%= time_ago_in_words(category.created_at) %> ago, 
+                    Updated <%= time_ago_in_words(category.updated_at) %>
+                    </small>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<div class="digg_pagination">
+    <%= will_paginate @categories, :container => false %>
+  </div>
+</div>
+
+
